@@ -25,13 +25,7 @@ INSTALLED_APPS = [
     "base_models",
     "core",
     "projects.generic",
-    # "projects.hemera",
-    # "projects.integrated_hotend_press",
-    # "projects.prusa_nube_press",
-    # "projects.v6_component_qc",
-    # "projects.v6_hot_tightening",
     "projects.v7_post_curing_qc",
-    # "v7_label_generator",
     "web_interface",
 
     "rest_framework",

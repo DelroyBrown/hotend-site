@@ -1,0 +1,2 @@
+flake8==4.0.1
+pygraphviz==1.7

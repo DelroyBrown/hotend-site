@@ -1,0 +1,39 @@
+{% extends 'userside_templates/userside_base.html' %}
+
+{% block content %}
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'styles/web_interface/user_side/search_results.css' %}">
+
+<div class="container">
+  <h1>Select your hotend</h1>
+
+  {% if events %}
+  <table class="results-table">
+    <thead>
+      <tr>
+        <th>Item</th>
+        <th>Item UID</th>
+        <th>Operator</th>
+        <th>Date of build</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for event in events %}
+      <tr>
+
+        <td><a href="{% url 'event_detail_view' event.id %}">{{ event.item.sku }}</a></td>
+        <td>{{ event.item.singleitem.uid }}</td>
+        <td>{{ event.operator.name }}</td>
+        <td>{{ event.date_created }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  {% else %}
+  <p>No search results found.</p>
+  {% endif %}
+
+  <a href="{% url 'hotend_qc_data' %}" class="back-btn">Back to Search</a>
+</div>
+{% endblock %}

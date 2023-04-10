@@ -1,0 +1,129 @@
+{% block content %}
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'styles/web_interface/user_side/event_detail.css' %}">
+
+{% include 'userside_templates/includes/header.html' %}
+
+
+
+<div class="container">
+  <!-- <h1>{{event.item.sku}} - {{event.date_created|date:'d/m/y'}}</h1> -->
+
+
+
+
+  <div class="box-container">
+    <div class="box">
+      <h2>UID</h2>
+      <p>{{ event.item.singleitem.uid }}</p>
+    </div>
+    <div class="box">
+      <h2>Completed</h2>
+      <p>
+        {% if event.completed == True %}
+        <img src="{% static 'images/correct.png' %}" alt="Correct" style="width: 20px;">
+        {% else %}
+        <img src="{% static 'images/cross.png' %}" alt="incorrect" style="width: 20px;">
+        {% endif %}
+      </p>
+    </div>
+    <div class="box">
+      <h2>Tested Leakage</h2>
+      <p>
+        {% if event.tested_leakage == True %}
+        <img src="{% static 'images/correct.png' %}" alt="Correct" style="width: 20px;">
+        {% else %}
+        <img src="{% static 'images/cross.png' %}" alt="incorrect" style="width: 20px;">
+        {% endif %}
+      </p>
+    </div>
+    <div class="box">
+      <h2>Tested Circuit</h2>
+      <p>
+        {% if event.tested_circuit == True %}
+        <img src="{% static 'images/correct.png' %}" alt="Correct" style="width: 20px;">
+        {% else %}
+        <img src="{% static 'images/cross.png' %}" alt="incorrect" style="width: 20px;">
+        {% endif %}
+      </p>
+    </div>
+    <div class="box">
+      <h2>Tested Thermal Cycling</h2>
+      <p>
+        {% if event.tested_thermal_cycling == True %}
+        <img src="{% static 'images/correct.png' %}" alt="Correct" style="width: 20px;">
+        {% else %}
+        <img src="{% static 'images/cross.png' %}" alt="incorrect" style="width: 20px;">
+        {% endif %}
+      </p>
+    </div>
+    <div class="box">
+      <h2>Successful Thermal Cycles</h2>
+      <p style="font-weight: 600;">{{ event.successful_thermal_cycles }} / 4</p>
+    </div>
+    <div class="box">
+      <h2>Date of Build</h2>
+      <p>{{ event.date_created|date:"d/m/Y" }}</p>
+    </div>
+
+  </div>
+
+  <div>
+    <canvas id="temperatureChart"></canvas>
+  </div>
+
+
+  <a href="{% url 'hotend_qc_data' %}">Back to Event</a>
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+{% endblock %}
+
+{% block scripts %}
+<script>
+  // Parse timepoints and temperatures
+  const timepoints = JSON.parse('{{ event.log_timepoints|escapejs }}');
+  const temperatures = JSON.parse('{{ event.log_temperatures|escapejs }}');
+
+  // Get the canvas element and create a chart context
+  const chartElement = document.getElementById('temperatureChart');
+  const chartContext = chartElement.getContext('2d');
+
+  // Define the chart data and options
+  const chartData = {
+    labels: timepoints,
+    datasets: [{
+      label: 'Temperature',
+      data: temperatures,
+      backgroundColor: '#101641',
+      borderColor: '#101641',
+      borderWidth: 1,
+    }, ],
+  };
+
+  const chartOptions = {
+    responsive: true,
+    scales: {
+      y: {
+        beginAtZero: true,
+      },
+      x: {
+        title: {
+          display: true,
+          text: 'Time(s/ms)',
+        },
+      },
+    },
+  };
+
+  // Create and display the chart
+  const temperatureChart = new Chart(chartContext, {
+    type: 'line',
+    data: chartData,
+    options: chartOptions,
+  });
+</script>
+{% endblock %}

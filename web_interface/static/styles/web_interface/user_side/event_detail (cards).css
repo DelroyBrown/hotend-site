@@ -1,0 +1,99 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  max-width: 100%;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+thead {
+  background-color: #0C0E32;
+  color: white;
+}
+
+th,
+td {
+  text-align: left;
+  padding: 12px;
+  border-bottom: 1px solid #ddd;
+}
+
+.chart-container {
+  position: relative;
+  width: 100%;
+  /* height: 400px; */
+}
+
+canvas {
+  width: 100%;
+  /* height: 50%; */
+}
+
+a {
+  color: #0C0E32;
+  text-decoration: none;
+  display: inline-block;
+  margin-top: 10px;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+
+.box-container {
+  height: fit-content;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.box {
+  border: 2px solid #000;
+  border-radius: 7px;
+  height: fit-content;
+  margin: 10px;
+  padding: 5px;
+  box-sizing: border-box;
+  width: calc(33.33% - 20px);
+}
+
+.box h2 {
+  margin-bottom: 10px;
+}
+
+@media only screen and (max-width: 768px) {
+  .box {
+    width: calc(50% - 10px);
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .box {
+    width: 100%;
+  }
+}
+
+
+@media (max-width: 767px) {
+
+  th,
+  td {
+    font-size: 14px;
+    padding: 8px;
+  }
+}

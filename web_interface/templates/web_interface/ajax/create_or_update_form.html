@@ -1,0 +1,34 @@
+<form action="{{ action_url }}" method="post">
+    <div class="form-header">
+        <h2>{{ operation_label }} - {{ id_field }}</h2>
+    </div>
+
+    <div class="{% if form.fields|length < 6 %}vertical{% endif %} form-contents">
+        {% csrf_token %}
+
+        {% for field in form %}
+            {% if not field.is_hidden %}
+                <div class="{% if field.errors %}has-errors{% endif %} field-wrapper" id="wrapper__{{ field.id_for_label }}">
+                    {{ field.errors }}
+
+                    <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                    {{ field }}
+
+                    {% if field.help_text %}
+                        <p class="help">{{ field.help_text | safe }}</p>
+                    {% endif %}
+                </div>
+            {% else %}
+                {{ field }}
+            {% endif %}
+        {% endfor %}
+
+        {{ form.non_field_errors }}
+
+        {% if has_errors %}
+            <div class="error-notification">
+                Please fix the error(s) above.
+            </div>
+        {% endif %}
+    </div>
+</form>

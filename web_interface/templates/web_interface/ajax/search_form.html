@@ -1,0 +1,24 @@
+<form class="search-form" action="{{ action_url }}" method="post">
+    <div class="vertical form-contents">
+        {% csrf_token %}
+
+        {% for field in form %}
+            {% if not field.is_hidden %}
+                <div class="{% if field.errors %}has-errors{% endif %} field-wrapper" id="wrapper__{{ field.id_for_label }}">
+                    {{ field.errors }}
+
+                    <div class="field-row">
+                        <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                        {{ field }}
+                    </div>
+
+                    {% if field.help_text %}
+                        <p class="help">{{ field.help_text | safe }}</p>
+                    {% endif %}
+                </div>
+            {% else %}
+                {{ field }}
+            {% endif %}
+        {% endfor %}
+    </div>
+</form>

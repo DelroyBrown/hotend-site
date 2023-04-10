@@ -1,0 +1,37 @@
+// Screen sizes
+@size-min-large: 1280px;
+@size-min-medium: 640px;
+
+// Media query mixins
+// (thanks to https://www.iambacon.co.uk/blog/life-is-now-easier-create-media-query-mixins-with-rulesets-less-css)
+.mq-large(@rules) {
+    @media (min-width: @size-min-large) {
+        @rules();
+    }
+}
+
+.mq-medium-and-up(@rules) {
+    @media (min-width: calc(@size-min-medium)) {
+        @rules();
+    }
+}
+
+
+.mq-medium(@rules) {
+    @media (min-width: calc(@size-min-medium)) and (max-width: calc(@size-min-large - 1px)) {
+        @rules();
+    }
+}
+
+.mq-medium-and-down(@rules) {
+    @media (max-width: calc(@size-min-large - 1px)) {
+        @rules();
+    }
+}
+
+
+.mq-small(@rules) {
+    @media (max-width: calc(@size-min-medium - 1px)) {
+        @rules();
+    }
+}

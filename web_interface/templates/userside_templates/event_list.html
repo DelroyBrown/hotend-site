@@ -1,0 +1,51 @@
+{% extends 'userside_templates/userside_base.html' %}
+
+{% block content %}
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'styles/web_interface/user_side/search_page.css' %}">
+
+
+
+
+<div class="search-page__container">
+
+  <img src="{% static 'images/E3D_logo.svg' %}" style="width: 300px;">
+  <h1>Hotend QC Data</h1>
+  <small>Enter the entire code on your Hotend tag.</small>
+  <div class="serial-number-wrap">
+    <img src="{% static 'images/qr-code.png' %}"  alt="qr-code">
+    <p class="serial-text">
+      180323-4321<br>
+      XXXXXXXXXXX
+    </p>
+  </div>
+
+  <form method="get" action="{% url 'search_results' %}" onsubmit="return formatSearchInput();">
+    <input type="text" name="search" id="search-input" placeholder="Search by UID" />
+    <button type="submit">Search</button>
+  </form>
+  
+
+</div>
+
+<script>
+  function formatSearchInput() {
+    const searchInput = document.getElementById('search-input');
+    const searchValue = searchInput.value.toUpperCase();
+    searchInput.value = searchValue;
+    const uidRegex = /^[0-3][0-9][0-1][0-9][0-9][0-9]-[0-9AC-HJ-NP-Z]{4}$/;
+
+    if (!uidRegex.test(searchValue)) {
+      alert('Invalid UID format. Please enter a valid UID.');
+      return false;
+    }
+
+    return true;
+  }
+</script>
+
+
+  
+
+{% endblock content %}

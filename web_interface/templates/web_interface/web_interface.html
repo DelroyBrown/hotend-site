@@ -1,0 +1,76 @@
+{% load static %}
+
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Engineering Production Settings</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="{% static 'js/react.js' %}"></script>
+
+    <link href="https://fonts.googleapis.com/css?family=Kanit&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
+
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
+    <style>
+        .top-view-resport-result{display: flex;padding: 20px 0px;}
+        .leftside-bar{display: block;width: 50%;}
+        .leftside-bar strong{display: block;}
+        .leftside-bar span{}
+        .rightside-bar{display: block;width: 50%;}
+        .rightside-bar button{float: right;}
+        .canvasjs-chart-credit{display: none;}
+
+        .qc-page .pagination{display: none !important;}
+        .oee-page .pagination{display: none !important;}
+
+        .browse-machine{padding: 20px 0px;}
+        .browse-machine strong{}
+        .browse-machine .list-tabs{margin-top: 20px;}
+        .browse-machine .list-tabs .browse-tab{border: 1px solid #ccc;
+border-radius: 20px;
+padding: 0px 8px;
+margin-right: 10px;
+cursor: pointer;}
+.button-center-box{display: block;width: 100%;text-align: center;margin-top: 40px;}
+.button-center-box button{text-align: center;display: inline;}
+.legend_{display: none;}
+
+.paretochart-view{margin-top: 60px;
+display: block;}
+.quantity-reasons{padding: 100px 10px;float: left;
+writing-mode: tb-rl;
+transform: rotate(-180deg);}
+
+.failure-reasons{text-align: center;
+margin: 20px 0px;}
+
+    </style>
+
+</head>
+
+<body id="web-interface">
+    <div id="react-container">
+        <div class="loading">
+            <div class="loading-text">Loading....</div>
+        </div>
+    </div>
+
+    {% autoescape off %}
+        <script>
+            function launchReact() {
+                initialiseReactApp({{ project_configs }});
+            }
+
+            $(document).ready(launchReact);
+        </script>
+    {% endautoescape %}
+</body>
+
+</html>

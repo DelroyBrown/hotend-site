@@ -1,0 +1,92 @@
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  /* background-color: #0C0E32; */
+  margin: 0;
+  font-family: "DM Sans", sans-serif;
+}
+
+form {
+  width: 100%;
+  max-width: 800px;
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+}
+
+input[type="text"] {
+  width: 100%;
+  font-size: 16px;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: none;
+  border-bottom: 2px solid #000;
+  background-color: transparent;
+  color: black;
+  outline: none;
+}
+
+input[type="text"] {
+  text-transform: capitalize;
+}
+
+input[type="text"]::placeholder {
+  color: black;
+  opacity: 0.5;
+}
+
+button[type="submit"] {
+  display: none;
+}
+
+@media (max-width: 767px) {
+  input[type="text"] {
+    font-size: 14px;
+  }
+
+  form {
+    max-width: 300px;
+  }
+
+}
+
+.search-page__container {
+  width: 100%;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+}
+
+.search-page__container h1 {
+  text-transform: uppercase;
+  margin-bottom: 0px;
+}
+
+.search-page__container small {
+  font-size: 15px;
+}
+
+.serial-number-wrap {
+  display: flex;
+  border: 2px solid black;
+  width: 270px;
+  padding: 0px 10px;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 50px;
+}
+
+.serial-number-wrap img {
+  width: 40px;
+  height: 40px;
+}
+
+.serial-text {
+  letter-spacing: 3px;
+  font-weight: 600;
+  padding: 0;
+  font-size: 1.1rem;
+}

@@ -1,0 +1,52 @@
+button, .button, input, .input {
+    outline: none;
+    text-decoration: none;
+
+    display: flex;
+    flex-flow: row;
+    align-items: center;
+    justify-content: center;
+}
+
+button, .button {
+    padding: 5px 10px;
+    color: @white;
+    cursor: pointer;
+
+    background-color: fade(@text-dark, 70%);
+    border: 2px solid @text-dark;
+
+    &:hover:not(:disabled):not(.active) {
+        background-color: @white;
+        color: @text-dark;
+    }
+
+    &:disabled {
+        background-color: @text-light;
+        border-color: @grey-mid;
+        color: @grey-mid;
+        cursor: inherit;
+    }
+
+    &.active {
+        color: @white;
+    }
+
+    &, &:focus, &:active {
+        outline: none;
+    }
+}
+
+input, .input, select, textarea {
+    padding: 7px;
+
+    border: 1px solid @grey-dark;
+    border-radius: 5px;
+    background-color: fade(@white, 80%);
+
+    .font-face-text();
+
+    &:focus {
+        border-color: @text-dark;
+    }
+}

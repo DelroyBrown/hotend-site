@@ -1,0 +1,69 @@
+.font-face-text {
+    font-family: "DM Sans", sans-serif;
+}
+
+.font-face-title {
+    font-family: "Kanit", serif;
+}
+
+.font-text {
+    .font-face-text();
+    font-size: 16px;
+}
+
+.font-text-large {
+    .font-face-text();
+    font-size: 20px;
+
+    .mq-medium({
+        font-size: 19px;
+    });
+
+    .mq-small({
+        font-size: 18px;
+    });
+}
+
+.font-text-small {
+    .font-face-text();
+    font-size: 14px;
+}
+
+.font-heading-1 {
+    .font-face-title();
+    font-size: 25px;
+
+    .mq-medium({
+        font-size: 22px;
+    });
+
+    .mq-small({
+        font-size: 20px;
+    });
+}
+
+.font-heading-2 {
+    .font-face-title();
+    font-size: 23px;
+
+    .mq-medium({
+        font-size: 21px;
+    });
+
+    .mq-small({
+        font-size: 19px;
+    })
+}
+
+.font-subheading {
+    .font-face-title();
+    font-size: 18px;
+
+    .mq-medium({
+        font-size: 17px;
+    });
+
+    .mq-small({
+        font-size: 16px;
+    })
+}

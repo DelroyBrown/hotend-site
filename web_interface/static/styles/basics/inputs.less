@@ -1,0 +1,68 @@
+.field-wrapper {
+    display: flex;
+    flex-flow: column;
+    align-items: flex-start;
+
+    label, input, select, textarea {
+        width: 100%;
+    }
+
+    &:not(.horizontal) {
+        label {
+            margin-bottom: 5px;
+        }
+    }
+
+    input, select {
+        height: 38px;
+    }
+
+    input:not([type=checkbox]), select, textarea, span.select2-selection {
+        border: 1px solid @text-mid;
+        color: @text-dark;
+
+        &.required {
+            border-color: @text-dark;
+        }
+
+        &:disabled {
+            background-color: @grey-light;
+            border-color: @grey-mid;
+            color: @grey-overlay;
+        }
+    }
+
+    input[type=checkbox] {
+        display: flex;
+        flex-flow: row;
+        align-items: center;
+        justify-content: flex-start;
+
+        input {
+            transform: scale(1.7);
+            cursor: pointer;
+        }
+    }
+
+    // select2 overrides. These are here to defeat inline or highly-specific styles.
+    span.select2-container {
+        width: 100% !important;
+
+        .selection {
+            width: 100%;
+
+            span.select2-selection {
+                width: 100%;
+                min-height: 38px;
+
+                border: 1px solid @text-mid !important;
+
+                #select2-id_result-container {
+                    display: inline-block;
+                    max-width: 95%;
+                }
+            }
+        }
+
+    }
+}

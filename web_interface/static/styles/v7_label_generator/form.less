@@ -1,0 +1,102 @@
+#v7-label-generator section.form-container {
+    width: 100%;
+    max-width: 900px;
+
+    margin: 0 auto;
+    padding: 40px 20px;
+
+    display: flex;
+    flex-flow: column;
+
+    h1 {
+        width: 100%;
+        margin-bottom: 40px;
+        text-align: center;
+    }
+
+    form {
+        display: flex;
+        flex-flow: column;
+        align-items: center;
+
+        button {
+            padding: 8px 20px;
+            font-size: 20px;
+        }
+
+        .content-columns {
+            width: 100%;
+            margin-bottom: 40px;
+
+            display: flex;
+            flex-flow: row;
+            align-items: flex-start;
+
+            .mq-small({
+                flex-flow: column;
+            });
+
+            .sku-search, .form-fields {
+                width: 100%;
+                height: 100%;
+                flex: 0 1 auto;
+
+                padding: 20px;
+                background-color: @grey-light;
+            }
+
+            .sku-search {
+                margin-right: 40px;
+
+                .instructions {
+                    width: 100%;
+                    margin-bottom: 20px;
+
+                    p {
+                        font-size: 13px;
+
+                        &:not(:last-of-type) {
+                            margin-bottom: 10px;
+                        }
+                    }
+                }
+
+                label, input, button, #search-errors {
+                    width: 100%;
+                    margin-bottom: 15px;
+                }
+            }
+
+            .form-fields {
+                 p {
+                    width: 100%;
+                    margin-bottom: 20px;
+
+                    display: flex;
+                    flex-flow: column;
+                    align-items: flex-start;
+
+                    label[for="id_quantity"] {
+                        font-weight: bold;
+                    }
+
+                    input, select {
+                        width: 100%;
+                    }
+
+                    .helptext {
+                        font-size: 13px;
+                    }
+                }
+            }
+        }
+
+        .button-container {
+            width: 100%;
+
+            display: flex;
+            flex-flow: row;
+            justify-content: center;
+        }
+    }
+}

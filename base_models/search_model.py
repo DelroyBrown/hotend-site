@@ -1,5 +1,6 @@
 from django.db import models
 
+
 class SearchResults(models.Model):
     uid = models.CharField(max_length=255)
     sku = models.CharField(max_length=255)

@@ -7,7 +7,7 @@ from django.db.models.functions import Cast
 from django.shortcuts import get_object_or_404, render
 from django.shortcuts import render, redirect
 from base_models.models.event import Event
-from .search_model import SearchResults
+from ..base_models.search_model import SearchResults
 
 
 def events_list_view(request):
